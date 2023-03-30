@@ -1,0 +1,52 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">新增练习者</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">@</span>
+            </div>
+            <input id = "name" #name type="text" class="form-control" placeholder="昵称" aria-label="昵称">
+            <!-- <span class="input-group-text">@</span>
+            <input id = "nickName" #nickName type="text" class="form-control" placeholder="姓名" aria-label="姓名"> -->
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+          </div>
+          <input id = "nickName" #nickName type="text" class="form-control" placeholder="姓名" aria-label="姓名">
+        </div>
+        <div class="input-group mb-3">
+          <select class="custom-select" id="level" #level>
+            <option value="-1" selected>选择级别</option>
+            <option value="1">6级</option>
+            <option value="2">5级</option>
+            <option value="3">4级</option>
+            <option value="4">3级</option>
+            <option value="5">2级</option>
+            <option value="6">1级</option>
+            <option value="7">初段</option>
+            <option value="8">二段</option>
+            <option value="9">三段</option>
+            <option value="10">四段</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close(name.value+';'+nickName.value + ';' + level.value)">提交</button>
+    </div>
+  </ng-template>
+
+<div>
+  
+</div>
+
+<div class="row">
+  <div class="col-md-4 offset-md-9"><button class="btn btn btn-primary pull-right" (click)="open(content)">新增练习者</button></div>
+    <!-- <div class="col-md-4">.col-md-4</div> -->
+  
+</div>

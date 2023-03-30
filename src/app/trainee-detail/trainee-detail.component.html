@@ -1,0 +1,106 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">签到日期</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div>
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">次数</th>
+                    <th scope="col">签到时间</th>
+                    <th scope="col">审核状态</th>
+                    <th scope="col">备注</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let trainee of traineeSignDetails; let i=index" scope="row" 
+                    [class.table-warning]="trainee.isReviewed===2"
+                    [class.table-danger]="trainee.isReviewed===0"
+                    [class.table-success]="trainee.isReviewed===1">
+                    <td>{{i+1}}</td>
+                    <td>{{trainee.createDt| date:'yyyy-MM-dd HH:mm:ss':'GMT+8'}}</td>
+                    <td>{{trainee.isReviewed | signStatus}}</td>
+                    <td>{{trainee.reason}}</td>
+                </tr>
+                
+                
+            </tbody>
+        </table>
+          <!-- <div *ngIf="displayMonth">
+            <ngb-datepicker
+              #dp
+              [dayTemplate]="t"
+              outsideDays="hidden"
+              [(ngModel)]="model"
+              [startDate]="this.startDate"
+            ></ngb-datepicker>
+            <ng-template #t let-date let-focused="focused">
+              <span
+                class="custom-day"
+                [class.focused]="focused"
+                [class.range]="isRange(date)"
+              >
+                {{ date.day }}
+              </span>
+            </ng-template>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      关闭
+    </button>
+  </div>
+</ng-template>
+
+<div class="container text-center">
+  <div class="row">
+    <div ngbDropdown class="d-inline-block">
+      <button
+        type="button"
+        class="btn btn-sm"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+      >
+        {{ this.selectedYear }}
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button
+          ngbDropdownItem
+          class="btn btn-sm"
+          *ngFor="let year of traineesYears"
+          (click)="this.switchYear(year.year)"
+        >
+          {{ year.year }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      echarts
+      [options]="barOption"
+      class="chart"
+      (chartClick)="onChartEvent($event, 'chartClick'); open(content)"
+    ></div>
+  </div>
+  <div class="row">
+    <div class="col-6"></div>
+    <div class="col"><button (click)="goBack()">返回</button></div>
+  </div>
+</div>
