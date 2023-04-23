@@ -1,4 +1,5 @@
-import { AttendanceReviewDef } from "src/app/model/defs/tranees/Attendance.review.def";
+
+import { AttendanceReviewDef } from "../../../defs/tranees/attendance.review.def";
 import { ResponseBase } from "../response.base";
 
 

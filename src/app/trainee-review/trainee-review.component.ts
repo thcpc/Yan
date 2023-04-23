@@ -3,7 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { catchError } from 'rxjs';
 import { AlertErrorComponent } from '../alert-error/alert-error.component';
 import { AlertSuccessComponent } from '../alert-success/alert-success.component';
-import { AttendanceReviewDef } from '../model/defs/tranees/Attendance.review.def';
+import { AttendanceReviewDef } from '../model/defs/tranees/attendance.review.def';
 import { TraineeService } from '../services/trainee.service';
 
 @Component({
